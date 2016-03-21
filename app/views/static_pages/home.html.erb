@@ -1,0 +1,13 @@
+<% if current_user %>
+	<h1>Hello <%= current_user.username %></h1>
+	<h4>Whom would you like to send swag to?</h4>
+	<form action="/tweet" method="post">
+		<label>Twitter Handle</label>
+		<br>
+		<input type="text" name="handle">
+		<button>Submit</button>
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	</form>
+<% else %>
+	<a href="/auth/twitter">Login</a>
+<% end %>
